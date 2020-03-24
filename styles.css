@@ -1,0 +1,76 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: grid;
+  place-content: center;
+  font-family: "Inter", sans-serif;
+  background-color: #eff1f8;
+  color: #181937;
+}
+
+input,
+button {
+  font: inherit;
+  padding: 1em;
+  border-radius: 6px;
+}
+
+h2 {
+  margin-top: 0;
+  letter-spacing: -0.04em;
+  font-size: 1.75rem;
+}
+
+.c-todo {
+  background-color: #fff;
+  padding: 2em 1.6em;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(41, 44, 117, 0.1);
+}
+.c-todo__items {
+  margin: 0 0 1.5rem;
+  padding: 0 0 1.5rem 1rem;
+  list-style: square;
+  border-bottom: 1px solid #eee;
+}
+.c-todo__item {
+  padding: 0.4em 0;
+}
+
+input {
+  border: 1px solid #e7e6ef;
+  background-color: #fbfbfe;
+  border-radius: 6px;
+  display: block;
+  padding: 0.75rem;
+  outline: none;
+  margin: 0.5rem 0 0.8rem;
+  width: 100%;
+  max-width: 100%;
+  line-height: 1;
+}
+input:focus {
+  border: 1px solid #c0bddb;
+  box-shadow: 0 0 0 3px rgba(175, 168, 240, 0.2);
+}
+input.is-empty:focus {
+  border: 1px solid #da3022;
+  box-shadow: 0 0 0 3px rgba(218, 48, 34, 0.2);
+}
+
+button {
+  border: 0;
+  background: -webkit-gradient(linear, left top, right top, from(#748bf0), to(#7bbcff));
+  background: linear-gradient(to right, #748bf0, #7bbcff);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0.8em 1em;
+  outline: none;
+}
+button:focus {
+  box-shadow: 0 0 0 3px rgba(175, 168, 240, 0.4);
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple React to-do list app!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div id="container"></div>
+  <script type="text/babel">
+    class TodoListApp extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          todoList: ["Playing with Mesh Mesh"]
+        };
+      }
+
+      handleSubmit = e => {
+        event.preventDefault();
+        const todoItemInput = event.target.elements.todoitem;
+        const value = todoItemInput.value;
+
+        if (value == "") {
+          todoItemInput.focus();
+          return;
+        }
+
+        this.setState(({ todoList }) => ({
+          todoList: todoList.concat(value)
+        }));
+
+        todoItemInput.value = "";
+        todoItemInput.focus();
+      };
+
+      render() {
+        const { todoList } = this.state;
+
+        return (
+          <div className="c-todo">
+            <h2>Enter your to-do</h2>
+            <ul className="c-todo__items">
+              {todoList.map(i => (
+                <TodoItem item={i} />
+              ))}
+            </ul>
+            <form className="c-todo__form" onSubmit={this.handleSubmit}>
+              <label htmlFor="todoTextInput">Todo item:</label>
+              <input
+                type="text"
+                name="todoitem"
+                id="todoTextInput"
+                placeholder="write anything here.."
+              />
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+        );
+      }
+    }
+
+    const TodoItem = props => {
+      return <li className="c-todo__item">{props.item}</li>;
+    };
+
+    ReactDOM.render(<TodoListApp />, document.querySelector("#container"));
+  </script>
+</body>
+
+</html>
